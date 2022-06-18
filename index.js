@@ -248,17 +248,16 @@ Use copy to do the following:
 🌟 EXAMPLE of return: ["Amedeo Modigliani", "Vasiliy Kandinskiy", "Diego Rivera"....]
 */
 
-function listOfNames(artist){
-const artistsCopy = [];
-  
-  for(let i = 0; i < artist.length; i++) {
-    if(artist[i].id < 21) {
-    artistsCopy.push(artist[i]);
-    }
-   }
-   return `${artistsCopy[artists.name]}`;
-  }
-   console.log(listOfNames(artists));
+function listOfNames(artists) {
+  let artistsNames = [] 
+  for (let i = 0; i < artists.length; i++){
+    let name = artists[i].name 
+    artistsNames.push(name); 
+  }   
+  return artistsNames;
+}
+
+console.log(listOfNames(artists));
 
   /*Your Code Here*/
 
@@ -274,17 +273,15 @@ Use removeArtist to do the following:
 5. Return the resulting copied array
 🌟 EXAMPLE: if removeArtist is invoked with the artists array and the number 0, it will return the resulting array with Amedeo Modigliani removed from our dataset. */
 
-function removeArtist(array, index){
-const newArray = [];
-
-for(let i = 0; i < artists.length; i++){
-  if(newArray[i] === index){
-    newArray.splice(0, 1);
+function removeArtist(artists, removedIndex) { 
+  let newList = []; 
+  for (let i = 0; i < artists.length; i++) { 
+    if (i != removedIndex) { 
+      newList.push(artists[i]); 
+    }
   }
+  return newList;
 }
-return newArray;
-}
-console.log(removeArtist(artists, 0));
 
   /*Your Code Here*/
   
@@ -325,7 +322,14 @@ Use lotsOfArt to do the following:
 🌟 EXAMPLE: lotsOfArt(artists) will return ["Amedeo Modigliani", "Rene Magritte", ... "Albrecht Dürer"]
 */
 function lotsOfArt(artist){
-  return artist.length;
+  let result = [];
+  for(let i = 0; i < artist.length; i++){
+    let paintings = artist[i].paintings
+    if(paintings > 100){
+      result.push(artist[i].name)
+    }
+  }
+  return result;
 }
   
   console.log(lotsOfArt(artists));
@@ -348,10 +352,15 @@ Use artistInfo to do the following:
   "Frida Kahlo de Rivera (Spanish pronunciation: [ˈfɾiða ˈkalo]; born Magdalena Carmen Frida Kahlo y Calderón; 6 July 1907 – 13 July 1954) was a Mexican artist who painted many portraits, self-portraits and works inspired by the nature and artifacts of Mexico. Inspired by the country's popular culture, she employed a naïve folk art style to explore questions of identity, postcolonialism, gender, class and race in Mexican society. Her paintings often had strong autobiographical elements and mixed realism with fantasy. In addition to belonging to the post-revolutionary Mexicayotl movement, which sought to define a Mexican identity, Kahlo has been described as a surrealist or magical realist.Born to a German father and a mestiza mother, Kahlo spent most of her childhood and adult life at her family home in Coyoacán, La Casa Azul, now known and publicly accessible as the Frida Kahlo Museum. She was disabled by polio as a child. Until a traffic accident at age eighteen caused lifelong pain and medical problems, she had been a promising student headed for medical school. During her recovery, she returned to her childhood hobby of art with the idea of becoming an artist."
 */
 
-function artistInfo(array, artistsName){
-  return `${array[artistsName.bio]}`;
+function artistInfo(artists, name){
+  for(let i = 0; i < artists.length; i++){
+    if(artists[i].name == name) {
+      return artists[i].bio
+    }
+  }
 }
-console.log(artistInfo(artists, 'Kazmir Malevich'));
+console.log(artistInfo(artists, 'Frida Kahlo'));
+
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 9: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -364,13 +373,17 @@ Use artistByCountry to do the following:
 🌟 EXAMPLE: Invoking artistByCountry(artists, 'Spanish') will return: [ 'Salvador Dali', 'Pablo Picasso', 'Francisco Goya']
 */
 
-function artistByCountry(artist, string){
-  const places = []
-  for(let i = 0; i < artists.length; i++) {
-    if(places === 'nationality');
+function artistByCountry(artists, nationality){
+ let nationsArtists =[];
+
+ for(let i = 0; i < artists.length; i++) {
+  if(artists[i].nationality == nationality) {
+    nationsArtists.push(artists[i].name)
   }
+ }
+ return nationsArtists
 }
-console.log(artistByCountry(artists, 'Russian'));
+console.log(artistByCountry(artists, 'Spanish'));
 
 
 
